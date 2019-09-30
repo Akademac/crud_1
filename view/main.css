@@ -1,0 +1,40 @@
+
+input, button {
+	display: block;
+	margin: 5px;
+	padding: 2px;
+	background: lightgrey;
+}
+
+.display {
+	width: 50rem;
+	height: 100rem;
+	margin: 0px auto;
+	background: grey;
+}
+
+.displayLi {
+	width: 100%;
+	height: 1.5rem;
+	background: lightgreen;
+	border-bottom: 1px solid black;
+}
+
+.update {
+	float: right;
+	margin-right: 1rem;
+	background: blue;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+
+}
+
+.delete {
+	float: right;
+	margin-right: .2rem;
+	background: red;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
