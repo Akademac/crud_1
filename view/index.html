@@ -1,24 +1,103 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Test #5</title>
-	<link rel='stylesheet' type='text/css' href='main.css' />
-</head>
-<body>
-	<form method="POST" action="/postData">
-		<input type="text" name="car" id='car' placeholder="car" />
-		<input type="text" name="model" id='model' placeholder="model">
-		<button type='submit'> Add Car</button>
-	</form>
-		<div class='display'>
-<!-- 			<div class='displayLi'>
-				<span class='car'>Honda</span>
-				<span class='model'>Civic</span>
-				<span class='delete'>delete</span>
-				<span class='update'>update</span>
-			</div>
- -->		</div>
 
-	<script src='main.js'></script>
-</body>
+<html>
+  <head>
+    <title>Test #5</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+  	      	<iframe id='iframe' name='my_iframe' hidden></iframe>
+
+    <div class="jumbotron">
+      <div class="row">
+        <form method="POST" action="/postData" class="col-md-6" id="formUpdate" target='my_iframe'>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Car: </label>
+            <div class="col-sm-4">
+              <input
+                type="text"
+                class="form-control"
+                name="car"
+                id="car"
+                placeholder="car"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Model: </label>
+            <div class="col-sm-4">
+              <input
+                type="text"
+                name="model"
+                id="model"
+                placeholder="model"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <button class="btn btn-success" type="submit" id='addCar'>Add Car</button>
+          <button id="updateCar" class="btn btn-primary" type="submit">
+            Update Car
+          </button>
+        </form>
+
+        <!-- <form method="POST" enctype="application/x-www-form-urlencoded" class="form-group" id="formUpdated">
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Car: </label>
+                  <div class="col-sm-4">
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="carUpdate"
+                      id="carUpdate"
+                      placeholder="car"
+                    />
+                  </div>
+                </div>
+            <label class="col-sm-2 control-label">Model: </label>
+            <div class="col-sm-4">
+              <input
+                type="text"
+                name="modelUpdate"
+                id="modelUpdate"
+                placeholder="model"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <button id="updateCar" class="btn btn-primary" type="submit">
+            Update Car
+          </button>
+        </form> -->
+      </div>
+      <hr />
+      <div class="display">
+        <!-- 			<div class='displayLi'>
+
+				<span class='car'>Honda</span>
+
+				<span class='model'>Civic</span>
+
+				<span class='delete'>delete</span>
+
+				<span class='update'>update</span>
+
+			</div>
+
+ -->
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
 </html>

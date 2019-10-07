@@ -9,15 +9,26 @@ const ObjectID	 = require('mongodb').ObjectID;
 
 const app = express();
 
-//medlewares
+var router = express.Router();
+var methodOverride = require("method-override");
+
+//midlewares
 app.use(express.static('view'));
-app.use(express.urlencoded({extended : true}))
+app.use(express.urlencoded({extended : true}));
 app.use(express.json());
+
+// app.use(
+// 	bodyParser.urlencoded({extended : true}));
+
+app.use(methodOverride("X-HTTP-Method-Override"));
+app.use(methodOverride("_method"));  
 
 //routers
 app.get('/', (req, res) => {
 	res.send('We are on home page!!!');
 })
+
+
 
 
 //mongoDB
@@ -39,6 +50,7 @@ app.get('/showData', (req, res) => {
 			client.db(db).collection(collection).find({}).toArray((err, result) => {
 				if(err) throw err
 					else {
+						// ObjectID(db._id);
 						res.json(result);
 					}
 			})
@@ -72,7 +84,7 @@ app.post('/postData', (req, res) => {
 
 
 //update
-app.put('/:id', (req, res) => {
+app.put('/update/:id', (req, res) => {
 	const carID = ObjectID(req.params.id);
 	const userInput = req.body;
 	client.connect(err => {
@@ -80,7 +92,7 @@ app.put('/:id', (req, res) => {
 			console.log(err);
 		}
 		else {
-			client.db(db).collection(collection).findOneAndUpdate({_id : carID}, {$set : {car: userInput.car, model : userInput.model}}, {returnOriginal : false}, (err, result) => {
+			client.db(db).collection(collection).updateOne({_id : carID}, {$set : {car: userInput.car, model : userInput.model}}, {returnOriginal : false}, (err, result) => {
 				if(err) {
 					console.log(err);
 			}
@@ -94,7 +106,7 @@ app.put('/:id', (req, res) => {
 
 
 //delete
-app.delete('/:id', (req, res) => {
+app.delete('/delete/:id', (req, res) => {
 	const carID = ObjectID(req.params.id);
 	client.connect(err => {
 		if(err) {
